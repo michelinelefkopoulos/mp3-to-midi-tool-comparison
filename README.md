@@ -30,6 +30,19 @@ For a browser-based converter that returns a Standard MIDI file for DAW use, see
 
 The source URL for every row is included in `mp3-to-midi-tool-comparison.csv`. The data is a dated snapshot; pages can change after the check date.
 
+## Validate the CSV locally
+
+Use Python 3.9 or newer. No third-party packages or network access are required.
+
+```sh
+python validate_dataset.py
+python -m unittest -v test_validate_dataset.py
+```
+
+The validator checks column names, row shape, nonempty cells, unique recorded positions and URLs, domain/URL consistency, ISO dates, and the explicit `discussion` rows. It reads the CSV without modifying it. The output separates converter and discussion records.
+
+These are structural checks only. A passing result does not verify page quotations, live source availability, conversion accuracy, or current Google rankings. The original dated snapshot and its `not stated` cells remain unchanged.
+
 ## License
 
 The dataset is dedicated to the public domain under [CC0 1.0](LICENSE).
